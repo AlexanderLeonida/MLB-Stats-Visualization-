@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/aleon1/Desktop/leonida-lindsey/app/MyWebApp.csproj": {}
+    "/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/MyWebApp.csproj": {}
   },
   "projects": {
-    "/Users/aleon1/Desktop/leonida-lindsey/app/MyWebApp.csproj": {
+    "/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/MyWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aleon1/Desktop/leonida-lindsey/app/MyWebApp.csproj",
+        "projectUniqueName": "/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/MyWebApp.csproj",
         "projectName": "MyWebApp",
-        "projectPath": "/Users/aleon1/Desktop/leonida-lindsey/app/MyWebApp.csproj",
+        "projectPath": "/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/MyWebApp.csproj",
         "packagesPath": "/Users/aleon1/.nuget/packages/",
-        "outputPath": "/Users/aleon1/Desktop/leonida-lindsey/app/obj/",
+        "outputPath": "/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/aleon1/.nuget/NuGet/NuGet.Config"

@@ -9,65 +9,65 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyWebApp
 build_property.RootNamespace = MyWebApp
-build_property.ProjectDir = /Users/aleon1/Desktop/leonida-lindsey/app/
+build_property.ProjectDir = /Users/aleon1/Desktop/MLB-Stats-Visualization-/app/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/aleon1/Desktop/leonida-lindsey/app
+build_property.MSBuildProjectDirectory = /Users/aleon1/Desktop/MLB-Stats-Visualization-/app
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Comparisons.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Comparisons.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcGFyaXNvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Error.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Graphs.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Graphs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvR3JhcGhzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/index.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Players.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Players.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGxheWVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Roster.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Roster.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUm9zdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/SeasonStats.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/SeasonStats.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2Vhc29uU3RhdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/TeamProfile.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/TeamProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGVhbVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Teams.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Teams.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGVhbXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/_ViewImports.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/_ViewStart.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aleon1/Desktop/leonida-lindsey/app/Pages/Shared/_Layout.cshtml]
+[/Users/aleon1/Desktop/MLB-Stats-Visualization-/app/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-tdy2x9681t
