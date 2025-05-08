@@ -1,0 +1,41 @@
+@page
+@model PlayerModel
+
+<h2>Players Info</h2>
+
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>at_bats</th>
+            <th>on_base</th>
+            <th>rbi</th>
+            <th>pitch_count_saw</th>
+            <th>batting_avg</th>
+            <th>singles</th>
+            <th>doubles</th>
+            <th>triples</th>
+            <th>homeruns</th>
+            <th>fielding_errors</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.PlayerList)
+        {
+            <tr>
+                <td>@person.id</td>
+                <td>@person.at_bats</td>
+                <td>@person.on_base</td>
+                <td>@person.rbi</td>
+                <td>@person.pitch_count_saw</td>
+                <td>@person.batting_avg</td>
+                <td>@person.singles</td>
+                <td>@person.doubles</td>
+                <td>@person.triples</td>
+                <td>@person.homeruns</td>
+                <td>@person.fielding_errors</td>
+            </tr>
+        }
+    </tbody>
+</table>

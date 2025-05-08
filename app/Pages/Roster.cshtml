@@ -1,0 +1,40 @@
+@page
+@model RosterModel
+
+<h2>Roster Info</h2>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>team id</th>
+            <th>player id</th>
+            <th>first name</th>
+            <th>last name</th>
+            <th>height</th>
+            <th>weight</th>
+            <th>batting hand</th>
+            <th>jersey number</th>
+            <th>college</th>
+            <th>salary</th>
+            <th>position</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.RosterList)
+        {
+            <tr>
+                <td>@person.team_id</td>
+                <td>@person.player_id</td>
+                <td>@person.first_name</td>
+                <td>@person.last_name</td>
+                <td>@person.height</td>
+                <td>@person.weight</td>
+                <td>@person.bat_hand</td>
+                <td>@person.jersey_number</td>
+                <td>@person.college</td>
+                <td>@person.salary</td>
+                <td>@person.position</td>
+            </tr>
+        }
+    </tbody>
+</table>

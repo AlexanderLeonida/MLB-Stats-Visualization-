@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+
+<h2>Team Info</h2>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>market</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model.Teams)
+        {
+            <tr>
+                <td>@team.id</td>
+                <td>@team.name</td>
+                <td>@team.market</td>
+            </tr>
+        }
+    </tbody>
+</table>

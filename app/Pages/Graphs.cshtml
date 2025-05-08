@@ -1,0 +1,162 @@
+@page
+@model GraphsModel
+
+<form id="queryForm" method="get">
+    <div>
+        <label for="querySelection">Select a query:</label>
+        <select id="querySelection" name="querySelection">
+            <option value="">-- Select a Query --</option> 
+            <option value="1">Query 1: Teams Wins vs Losses</option>
+            <option value="2">Query 2: Teams Batting Average</option>
+            <option value="3">Query 3: Mariner Players Batting Average</option>
+        </select>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<div id="chartContainer" style="height: 400px; width: 100%; margin-bottom: 20px;"></div>
+<div id="dataTableContainer"></div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script>
+    $(document).ready(function () {
+    function loadChart(queryNumber) {
+        $.ajax({
+            url: '/Graphs?handler=ChartData&query=' + queryNumber,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                let chartOptions = {
+                    chart: {},
+                    title: { text: '' },
+                    xAxis: {},
+                    yAxis: {},
+                    tooltip: {},
+                    series: []
+                };
+                if (queryNumber === "1") {
+                    chartOptions.chart.type = 'areaspline';
+                    chartOptions.title.text = 'Wins by Team';
+                    chartOptions.xAxis.type = 'category';
+                    chartOptions.xAxis.title = { text: 'Team' };
+                    chartOptions.yAxis.title = { text: 'Wins' };
+                    chartOptions.series = [{
+                        name: 'Wins',
+                        data: data
+                    }];
+                } else if (queryNumber === "2") {
+                    chartOptions.chart.type = 'scatter';
+                    chartOptions.title.text = 'Wins vs Batting Average';
+                    chartOptions.xAxis.title = { text: 'Wins' };
+                    chartOptions.yAxis.title = { text: 'Batting Average' };
+                    chartOptions.tooltip = {
+                        pointFormat: '<b>{point.name}</b><br/>Wins: {point.x}<br/>Batting Avg: {point.y}'
+                    };
+
+                    // line of best fit
+                    let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+                    let n = data.length;
+
+                    data.forEach(point => {
+                        sumX += point.x;
+                        sumY += point.y;
+                        // increase in y and x (slope)
+                        sumXY += point.x * point.y;
+                        sumXX += point.x * point.x;
+                    });
+                    // least squares slope 
+                    let slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+                    let intercept = (sumY - slope * sumX) / n;
+
+                    // line start and end bounds
+                    let minX = Math.min(...data.map(p => p.x));
+                    let maxX = Math.max(...data.map(p => p.x));
+                    let trendline = [
+                        { x: minX, y: slope * minX + intercept },
+                        { x: maxX, y: slope * maxX + intercept }
+                    ];
+
+                    chartOptions.series = [
+                        {
+                            name: 'Teams',
+                            data: data
+                        },
+                        {
+                            name: 'Best Fit Line',
+                            type: 'line',
+                            data: trendline,
+                            marker: { enabled: false },
+                            enableMouseTracking: false,
+                            color: 'red',
+                            dashStyle: 'Dash'
+                        }
+                    ];
+                } else if (queryNumber === "3") {
+                    chartOptions.chart.type = 'column';
+                    chartOptions.title.text = "Mariner's Batting Averages";
+                    chartOptions.xAxis.title = { text: '# Times on Base' };
+                    chartOptions.yAxis.title = { text: 'Batting Average' };
+                    chartOptions.tooltip = {
+                        pointFormat: '<b>{point.name}</b><br/>OnBase: {point.x}<br/>BattingAvg: {point.y}'
+                    };
+                    chartOptions.series = [{
+                        name: 'Batting Average',
+                        data: data
+                    }];
+                }
+                Highcharts.chart('chartContainer', chartOptions);
+            },
+            error: function (err) {
+                console.error("Chart AJAX error:", err);
+            }
+        });
+    }
+
+        function loadTable(queryNumber) {
+            $.ajax({
+                url: '/Graphs?handler=TableData&query=' + queryNumber,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    let tableHtml = "<table border='1' cellpadding='5'><thead><tr>";
+                    if (data.length > 0) {
+                        // Add table headers
+                        for (let key in data[0]) {
+                            tableHtml += "<th>" + key + "</th>";
+                        }
+                        tableHtml += "</tr></thead><tbody>";
+                        // Add table rows
+                        data.forEach(row => {
+                            tableHtml += "<tr>";
+                            for (let key in row) {
+                                tableHtml += "<td>" + row[key] + "</td>";
+                            }
+                            tableHtml += "</tr>";
+                        });
+                        tableHtml += "</tbody></table>";
+                    } else {
+                        tableHtml = "<p>No data available.</p>";
+                    }
+
+                    $('#dataTableContainer').html(tableHtml);
+                },
+                error: function (err) {
+                    console.error("Table AJAX error:", err);
+                }
+            });
+        }
+
+        $('#queryForm').submit(function (e) {
+            e.preventDefault();
+            const query = $('#querySelection').val();
+            if (query) {
+                loadChart(query);
+                loadTable(query);
+            }
+        });
+    });
+</script>
+

@@ -1,0 +1,32 @@
+﻿@page
+@model TeamProfileModel
+
+<h2>Team Profile Info</h2>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>abbreviation</th>
+            <th>mascot</th>
+            <th>championship wins</th>
+            <th>championship seasons</th>
+            <th>playoff appearances</th>
+            <th>year founded</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model.TeamProfiles)
+        {
+            <tr>
+                <td>@team.id</td>
+                <td>@team.abbr</td>
+                <td>@team.mascot</td>
+                <td>@team.championships</td>
+                <td>@team.championship_seasons</td>
+                <td>@team.playoff_appearances</td>
+                <td>@team.founded</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,144 @@
+@page
+@model ComparisonsModel
+
+@* class documentation bootstrap which uses flexbox for a grid system https://getbootstrap.com/docs/4.0/layout/grid/*@
+<div class="container">
+    <form id="queryForm" method="get" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-2">
+                <label for="entity1" class="form-label">Entity 1</label>
+                <select id="entity1" name="entity1" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="Player">Player</option>
+                    <option value="Team">Team</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="entity2" class="form-label">Entity 2</label>
+                <select id="entity2" name="entity2" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="Team">Team</option>
+                    <option value="Player">Player</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="metric" class="form-label">Metric</label>
+                <select id="metric" name="metric" class="form-select" required>
+                    <option value="">Select</option>
+                    <option value="batting_avg">Batting Average</option>
+                    <option value="singles">Singles</option>
+                    <option value="doubles">Doubles</option>
+                    <option value="triples">Triples</option>
+                    <option value="homeruns">Homeruns</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="id1" class="form-label">ID 1</label>
+                <input type="text" id="id1" name="id1" class="form-control" required>
+            </div>
+            <div class="col-md-2">
+                <label for="id2" class="form-label">ID 2</label>
+                <input type="text" id="id2" name="id2" class="form-control" required>
+            </div>
+            <div class="col-md-1 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+    @* default empty until something occurs *@
+    <div id="errorContainer" class="alert alert-danger d-none"></div>
+    <div id="chartContainer" style="height: 400px; width: 100%; margin-bottom: 20px;"></div>
+    <div id="dataTableContainer"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+
+<script>
+$(document).ready(function () {
+    function showError(message) {
+        // clear previous chart & table if error appears
+        $('#errorContainer').text(message).removeClass('d-none');
+        $('#chartContainer').empty();
+        $('#dataTableContainer').empty();
+    }
+
+    function loadChart(data) {
+        let chartOptions = {
+            chart: { type: 'column' },
+            title: { text: `${data.entity1} vs ${data.entity2} - ${data.metric.replace('_', ' ').toUpperCase()}` },
+            xAxis: { 
+                categories: [data.entity1_name, data.entity2_name],
+                title: { text: 'Entities' }
+            },
+            yAxis: { title: { text: data.metric.replace('_', ' ').toUpperCase() } },
+            series: [{
+                name: data.metric.replace('_', ' ').toUpperCase(),
+                data: [parseFloat(data.entity1_value), parseFloat(data.entity2_value)]
+            }],
+            tooltip: {
+                pointFormat: '<b>{point.category}</b>: {point.y}'
+            }
+        };
+
+        Highcharts.chart('chartContainer', chartOptions);
+    }
+
+    function loadTable(data) {
+        let tableHtml = `
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>${data.metric.replace('_', ' ').toUpperCase()}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${data.entity1_name}</td>
+                        <td>${data.entity1_value}</td>
+                    </tr>
+                    <tr>
+                        <td>${data.entity2_name}</td>
+                        <td>${data.entity2_value}</td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
+        $('#dataTableContainer').html(tableHtml);
+    }
+
+    $('#queryForm').submit(function (e) {
+        e.preventDefault();
+        $('#errorContainer').addClass('d-none');
+
+        const formData = {
+            entity1: $('#entity1').val(),
+            entity2: $('#entity2').val(),
+            metric: $('#metric').val(),
+            id1: $('#id1').val(),
+            id2: $('#id2').val()
+        };
+
+        $.ajax({
+            url: '/Comparisons?handler=CompareData',
+            type: 'GET',
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                if (data.error) {
+                    showError(data.error);
+                } else {
+                    loadChart(data);
+                    loadTable(data);
+                }
+            },
+            error: function (err) {
+                showError('An error occurred while fetching data.');
+                console.error("AJAX error:", err);
+            }
+        });
+    });
+});
+</script> 

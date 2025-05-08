@@ -1,0 +1,42 @@
+@page
+@model SeasonStatsModel
+
+<h2>Season Stats</h2>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>season_id</th>
+            <th>team_id</th>
+            <th>year</th>
+            <th>batting_avg</th>
+            <th>singles</th>
+            <th>doubles</th>
+            <th>triples</th>
+            <th>homeruns</th>
+            <th>average team era</th>
+            <th>wins</th>
+            <th>losses</th>
+            <th>runs scored</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model.SeasonStats)
+        {
+            <tr>
+                <td>@team.season_id</td>
+                <td>@team.team_id</td>
+                <td>@team.year</td>
+                <td>@team.batting_avg</td>
+                <td>@team.singles</td>
+                <td>@team.doubles</td>
+                 <td>@team.triples</td>
+                <td>@team.homeruns</td>
+                <td>@team.era</td>
+                <td>@team.wins</td>
+                <td>@team.losses</td>
+                <td>@team.runs</td>
+            </tr>
+        }
+    </tbody>
+</table>
